@@ -7,8 +7,11 @@ def func(path):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray,(5,5),2)
 
-    th3 = cv2.adaptiveThreshold(blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
-    ret, res = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-    return res
+    th3 = cv2.adaptiveThreshold(blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2.2)
+    ret, res = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV)
 
+    cv2.imshow("test", res)
+    cv2.waitKey(2000)
 
+path="E:\\PyAndML\\Project\\Major_Project\\roughwork\\1.jpg"
+func(path)

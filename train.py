@@ -32,7 +32,7 @@ classifier.add(Dropout(0.40))
 classifier.add(Dense(units=96, activation='relu'))
 classifier.add(Dropout(0.40))
 classifier.add(Dense(units=64, activation='relu'))
-classifier.add(Dense(units=27, activation='softmax')) # softmax for more than 2
+classifier.add(Dense(units=28, activation='softmax')) # softmax for more than 2
 
 # Compiling the CNN
 classifier.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy']) # categorical_crossentropy for more than 2
@@ -51,13 +51,13 @@ train_datagen = ImageDataGenerator(
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-training_set = train_datagen.flow_from_directory('data2/train',
+training_set = train_datagen.flow_from_directory('data/train',
                                                  target_size=(sz, sz),
                                                  batch_size=10,
                                                  color_mode='grayscale',
                                                  class_mode='categorical')
 
-test_set = test_datagen.flow_from_directory('data2/test',
+test_set = test_datagen.flow_from_directory('data/test',
                                             target_size=(sz , sz),
                                             batch_size=10,
                                             color_mode='grayscale',
@@ -72,9 +72,9 @@ classifier.fit_generator(
 
 # Saving the model
 model_json = classifier.to_json()
-with open("model-bw.json", "w") as json_file:
+with open("Mymodel-bw.json", "w") as json_file:
     json_file.write(model_json)
 print('Model Saved')
-classifier.save_weights('model-bw.h5')
+classifier.save_weights('Mymodel-bw.h5')
 print('Weights saved')
 
