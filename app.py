@@ -214,57 +214,18 @@ class Application:
         self.root1.destroy()
 
     def action_call(self) :
-        pass
-    #     path="E:\\PyAndML\\Project\\Major_Project\\1.jpg"
-    #     self.root1 = tk.Toplevel(self.root)
-    #     self.root1.title("Effort By")
-    #     image2 =self.Image.open(path)
-    #     w = image2.width()
-    #     h = image2.height()
-    #     self.root1.geometry('%dx%d+0+0' % (w,h))
+        self.photo1 = tk.PhotoImage(file='1.png')
 
-    #     #labelText.fontsize('10')
-
-    #     label1 = Label(app, image=image2, textvariable=labelText,
-    #                 font=("Times New Roman", 24),
-    #                 justify=CENTER, height=4, fg="blue")
-    #     label1.pack()
-
-        # self.tx = tk.Label(self.root1)
-        # self.tx.pack(side='top')
-        # self.tx.config(text = "Efforts By", fg="red", font = ("Courier",30,"bold"))
-
+        self.root1 = tk.Toplevel(self.root)
+        self.root1.title("Effort By")
+        self.root1.protocol('WM_DELETE_WINDOW', self.destructor1)
         
-        # self.tx6 = tk.Label(self.root1)
-        # self.tx6.place(relx=0.1,rely=0.3)
-        # self.tx6.config(text = "Ritesh\n17/ICS/118", font = ("Courier",15,"bold"))
+        self.root1.geometry("795x468")
 
-       
-        # self.tx2 = tk.Label(self.root1)
-        # self.tx2.place(relx = 0.3,rely=0.3)
-        # self.tx2.config(text = "Anurag\n17/ICS/118", font = ("Courier",15,"bold"))
+        self.w1 = tk.Label(self.root1, image = self.photo1)
+        self.w1.place(x =0, y =0)
+        
 
-        
-        
-        # self.tx3 = tk.Label(self.root1)
-        # self.tx3.place(relx = 0.5,rely=0.3)
-        # self.tx3.config(text = "Ritesh Srivastav\n17/ICS/118", font = ("Courier",15,"bold"))
-
-      
-        # self.tx4 = tk.Label(self.root1)
-        # self.tx4.place(relx = 0.7,rely=0.3)
-        # self.tx4.config(text = "Arpit\n17/ICS/118", font = ("Courier",15,"bold"))
-        
-        
-        
-        # self.tx7 = tk.Label(self.root1)
-        # self.tx7.place(relx=0.2,rely=0.4)
-        # self.tx7.config(text = "Under the supervision of", fg="red", font = ("Courier",30,"bold"))
-
-
-        # self.tx6 = tk.Label(self.root1)
-        # self.tx6.place(relx = 0.4,rely = 0.5)
-        # self.tx6.config(text = "Ankur Sighal Sir", font = ("Courier",30,"bold"))
 
 print("Starting Application...")
 pba = Application()
