@@ -24,7 +24,7 @@ for i in string.ascii_uppercase:
 
 
 # Train or test 
-mode = 'train'
+mode = 'test'
 directory = 'data/'+mode+'/'
 minValue = 70
 
@@ -127,34 +127,13 @@ while True:
     # #blur = cv2.bilateralFilter(roi,9,75,75)
     
     th3 = cv2.adaptiveThreshold(blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
-    ret, test_image = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-    #time.sleep(5)
-    #cv2.imwrite("/home/rc/Downloads/soe/im1.jpg", roi)
-    #test_image = func("/home/rc/Downloads/soe/im1.jpg")
-
+    ret, test_image = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV)
 
     
-    test_image = cv2.resize(test_image, (300,300))
-    cv2.imshow("test", test_image)
+    roi = cv2.resize(test_image, (300,300))
+    cv2.imshow("test", roi)
         
-    # _, mask = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
-    # kernel = np.ones((1, 1), np.uint8)
-    # img = cv2.dilate(mask, kernel, iterations=1)
-    # img = cv2.erode(mask, kernel, iterations=1)
-    # # do the processing after capturing the image!
-    # roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-    # _, roi = cv2.threshold(roi, 120, 255, cv2.THRESH_BINARY)
     
-    # gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-    # cv2.imshow("GrayScale", gray)
-    # blur = cv2.GaussianBlur(gray,(5,5),2)
-    
-    # blur = cv2.bilateralFilter(roi,9,75,75)
-    
-    # th3 = cv2.adaptiveThreshold(frame,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
-    # ret, res = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-    # cv2.imshow("ROI", roi)
-    # roi = frame
     interrupt = cv2.waitKey(10)
     if interrupt & 0xFF == 27: # esc key
         break
@@ -164,14 +143,7 @@ while True:
         cv2.imwrite(directory+'1/'+str(count['one'])+'.jpg', roi)
     if interrupt & 0xFF == ord('2'):
         cv2.imwrite(directory+'2/'+str(count['two'])+'.jpg', roi)       
-    # if interrupt & 0xFF == ord('3'):
-    #     cv2.imwrite(directory+'3/'+str(count['three'])+'.jpg', roi)
-    # if interrupt & 0xFF == ord('4'):
-    #     cv2.imwrite(directory+'4/'+str(count['four'])+'.jpg', roi)
-    # if interrupt & 0xFF == ord('5'):
-    #     cv2.imwrite(directory+'5/'+str(count['five'])+'.jpg', roi)
-    # if interrupt & 0xFF == ord('6'):
-    #     cv2.imwrite(directory+'6/'+str(count['six'])+'.jpg', roi)
+  
     if interrupt & 0xFF == ord('a'):
         cv2.imwrite(directory+'A/'+str(count['a'])+'.jpg', roi)
     if interrupt & 0xFF == ord('b'):
